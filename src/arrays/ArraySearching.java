@@ -1,8 +1,13 @@
-//: arrays/ArraySearching.java
+package arrays;//: arrays/ArraySearching.java
 // Using Arrays.binarySearch().
-import java.util.*;
-import net.mindview.util.*;
-import static net.mindview.util.Print.*;
+import net.mindview.util.ConvertTo;
+import net.mindview.util.Generated;
+import net.mindview.util.Generator;
+import net.mindview.util.RandomGenerator;
+
+import java.util.Arrays;
+
+import static net.mindview.util.Print.print;
 
 public class ArraySearching {
   public static void main(String[] args) {
