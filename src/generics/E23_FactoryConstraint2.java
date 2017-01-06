@@ -31,10 +31,8 @@ class Widght{
     public String toString( ){
         return "Widght "+ id;
     }
-    public static class FactoryL implements generics.FactoryL<Widght>{
-
-        @Override
-        public Widght create(int arg){
+    public static class Factory implements FactoryL<Widght> {
+        public Widght create(int arg) {
             return new Widght(arg);
         }
     }
@@ -42,6 +40,6 @@ class Widght{
 public class E23_FactoryConstraint2 {
     public static void main(String[] args){
         new Foo<Integer>(new IntegerFactoryL());
-        new Foo<Widght>(new Widght.FactoryL());
+
     }
 }
