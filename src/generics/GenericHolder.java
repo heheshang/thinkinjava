@@ -1,4 +1,4 @@
-//: generics/GenericHolder.java
+package generics;//: generics/GenericHolder.java
 
 public class GenericHolder<T> {
   private T obj;
