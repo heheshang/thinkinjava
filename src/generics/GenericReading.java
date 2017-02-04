@@ -26,8 +26,7 @@ public class GenericReading {
     }
 
     static void f3( ){
-        CovariantReader<Fruit> fruitReader =
-                new CovariantReader<Fruit>();
+        CovariantReader<Fruit> fruitReader = new CovariantReader<Fruit>();
         Fruit f = fruitReader.readCovariant(fruit);
         Fruit a = fruitReader.readCovariant(apples);
     }
