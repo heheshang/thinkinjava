@@ -1,6 +1,7 @@
-//: generics/CuriouslyRecurringGeneric.java
+package generics;//: generics/CuriouslyRecurringGeneric.java
 
-class GenericType<T> {}
+class GenericType<T> {
+}
 
-public class CuriouslyRecurringGeneric
-  extends GenericType<CuriouslyRecurringGeneric> {} ///:~
+public class CuriouslyRecurringGeneric extends GenericType<CuriouslyRecurringGeneric> {
+} ///:~
