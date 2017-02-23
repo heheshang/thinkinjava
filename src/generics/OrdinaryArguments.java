@@ -1,4 +1,4 @@
-//: generics/OrdinaryArguments.java
+package generics;//: generics/OrdinaryArguments.java
 
 class OrdinarySetter {
   void set(Base base) {
