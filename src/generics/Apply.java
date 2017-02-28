@@ -8,8 +8,7 @@ import java.util.List;
 import static net.mindview.util.Print.print;
 
 public class Apply {
-    public static <T, S extends Iterable<? extends T>>
-    void apply(S seq, Method f, Object... args){
+    public static <T, S extends Iterable<? extends T>> void apply(S seq, Method f, Object... args){
         try {
             for ( T t : seq )
                 f.invoke(t, args);
