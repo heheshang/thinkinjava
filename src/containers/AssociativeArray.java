@@ -12,8 +12,7 @@ public class AssociativeArray<K, V> {
     }
 
     public static void main(String[] args){
-        AssociativeArray<String, String> map =
-                new AssociativeArray<String, String>(6);
+        AssociativeArray<String, String> map =  new AssociativeArray<String, String>(6);
         map.put("sky", "blue");
         map.put("grass", "green");
         map.put("ocean", "dancing");

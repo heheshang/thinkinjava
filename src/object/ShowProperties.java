@@ -1,4 +1,4 @@
-//: object/ShowProperties.java
+package object;//: object/ShowProperties.java
 
 public class ShowProperties {
   public static void main(String[] args) {

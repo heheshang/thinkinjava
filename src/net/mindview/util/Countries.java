@@ -133,8 +133,7 @@ public class Countries {
             {"URUGUAY", "Montevideo"}, {"VENEZUELA", "Caracas"},
     };
     static Map<String, String> map = new FlyweightMap();
-    static List<String> names =
-            new ArrayList<String>(map.keySet());
+    static List<String> names = new ArrayList<String>(map.keySet());
 
     // Create a partial map of 'size' countries:
     static Map<String, String> select(final int size){
@@ -165,31 +164,36 @@ public class Countries {
 
     public static void main(String[] args){
         print(capitals(10));
-        print(names(10));
-        print(new HashMap<String, String>(capitals(3)));
-        print(new LinkedHashMap<String, String>(capitals(3)));
-        print(new TreeMap<String, String>(capitals(3)));
-        print(new Hashtable<String, String>(capitals(3)));
-        print(new HashSet<String>(names(6)));
-        print(new LinkedHashSet<String>(names(6)));
-        print(new TreeSet<String>(names(6)));
-        print(new ArrayList<String>(names(6)));
-        print(new LinkedList<String>(names(6)));
-        print(capitals().get("BRAZIL"));
+//        print(names(10));
+//        print(new HashMap<String, String>(capitals(3)));
+//        print(new LinkedHashMap<String, String>(capitals(3)));
+//        print(new TreeMap<String, String>(capitals(3)));
+//        print(new Hashtable<String, String>(capitals(3)));
+//        print(new HashSet<String>(names(6)));
+//        print(new LinkedHashSet<String>(names(6)));
+//        print(new TreeSet<String>(names(6)));
+//        print(new ArrayList<String>(names(6)));
+//        print(new LinkedList<String>(names(6)));
+//        print(capitals().get("BRAZIL"));
     }
 
     // Use AbstractMap by implementing entrySet()
-    private static class FlyweightMap
-            extends AbstractMap<String, String> {
-        private static Set<Map.Entry<String, String>> entries =
-                new EntrySet(DATA.length);
+    private static class FlyweightMap extends AbstractMap<String, String> {
+        private static Set<Map.Entry<String, String>> entries = new EntrySet(DATA.length);
 
         public Set<Map.Entry<String, String>> entrySet( ){
+//            for ( Map.Entry<String, String> entry : entries ) {
+//                for ( Iterator<Map.Entry<String, String>> iterator = entries.iterator(); iterator.hasNext(); ) {
+//                    Map.Entry<String, String> next = iterator.next();
+//                    System.out.println("entry:" + next.getKey() + "=" + entry.getValue());
+//                }
+//
+//            }
+
             return entries;
         }
 
-        private static class Entry
-                implements Map.Entry<String, String> {
+        private static class Entry implements Map.Entry<String, String> {
             int index;
 
             Entry(int index){
@@ -218,8 +222,7 @@ public class Countries {
         }
 
         // Use AbstractSet by implementing size() & iterator()
-        static class EntrySet
-                extends AbstractSet<Map.Entry<String, String>> {
+        static class EntrySet extends AbstractSet<Map.Entry<String, String>> {
             private int size;
 
             EntrySet(int size){
@@ -240,8 +243,7 @@ public class Countries {
                 return new Iter();
             }
 
-            private class Iter
-                    implements Iterator<Map.Entry<String, String>> {
+            private class Iter implements Iterator<Map.Entry<String, String>> {
                 // Only one Entry object per Iterator:
                 private Entry entry = new Entry(-1);
 

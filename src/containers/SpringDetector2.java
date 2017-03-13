@@ -1,4 +1,4 @@
-//: containers/SpringDetector2.java
+package containers;//: containers/SpringDetector2.java
 // A working key.
 
 public class SpringDetector2 {

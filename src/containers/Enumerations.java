@@ -1,7 +1,11 @@
 package containers;//: containers/Enumerations.java
 // Java 1.0/1.1 Vector and Enumeration.
-import java.util.*;
-import net.mindview.util.*;
+import net.mindview.util.Countries;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Vector;
 
 public class Enumerations {
   public static void main(String[] args) {
