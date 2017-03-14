@@ -1,6 +1,1 @@
-"# thinkinjava" 
-"# thinkinjava" 
-"# thinkinjava" 
-"# thinkinjava" 
-"# thinkinjava" 
-"# thinkinjava" 
+think in java 范例，以及大部分练习题
