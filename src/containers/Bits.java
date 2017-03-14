@@ -1,4 +1,4 @@
-//: containers/Bits.java
+package containers;//: containers/Bits.java
 // Demonstration of BitSet.
 import java.util.*;
 import static net.mindview.util.Print.*;

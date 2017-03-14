@@ -1,4 +1,4 @@
-//: containers/FailFast.java
+package containers;//: containers/FailFast.java
 // Demonstrates the "fail-fast" behavior.
 import java.util.*;
 
@@ -7,6 +7,7 @@ public class FailFast {
     Collection<String> c = new ArrayList<String>();
     Iterator<String> it = c.iterator();
     c.add("An object");
+//    Iterator<String> it = c.iterator();
     try {
       String s = it.next();
     } catch(ConcurrentModificationException e) {

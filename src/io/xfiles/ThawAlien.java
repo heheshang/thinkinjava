@@ -1,4 +1,4 @@
-//: io/xfiles/ThawAlien.java
+package io.xfiles;//: io/xfiles/ThawAlien.java
 // Try to recover a serialized file without the
 // class of object that's stored in that file.
 // {RunByHand}
