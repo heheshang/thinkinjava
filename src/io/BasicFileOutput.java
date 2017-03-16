@@ -1,13 +1,13 @@
-//: io/BasicFileOutput.java
+package io;//: io/BasicFileOutput.java
 import java.io.*;
 
 public class BasicFileOutput {
-  static String file = "BasicFileOutput.out";
+  static String file = "BasicFileOutput.java";
   public static void main(String[] args)
   throws IOException {
     BufferedReader in = new BufferedReader(
       new StringReader(
-        BufferedInputFile.read("BasicFileOutput.java")));
+        BufferedInputFile.read("F:\\think\\thinkinjava\\src\\io\\BasicFileOutput.java")));
     PrintWriter out = new PrintWriter(
       new BufferedWriter(new FileWriter(file)));
     int lineCount = 1;

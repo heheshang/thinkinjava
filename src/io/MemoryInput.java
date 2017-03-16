@@ -1,11 +1,11 @@
-//: io/MemoryInput.java
+package io;//: io/MemoryInput.java
 import java.io.*;
 
 public class MemoryInput {
   public static void main(String[] args)
   throws IOException {
     StringReader in = new StringReader(
-      BufferedInputFile.read("MemoryInput.java"));
+      BufferedInputFile.read("F:\\think\\thinkinjava\\src\\io\\MemoryInput.java"));
     int c;
     while((c = in.read()) != -1)
       System.out.print((char)c);

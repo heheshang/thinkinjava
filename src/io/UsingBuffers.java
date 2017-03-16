@@ -1,4 +1,4 @@
-//: io/UsingBuffers.java
+package io;//: io/UsingBuffers.java
 import java.nio.*;
 import static net.mindview.util.Print.*;
 

@@ -17,6 +17,7 @@ class SortedDirList {
         path = new File("F:\\think\\thinkinjava\\src\\io\\");
     }
 
+
     public SortedDirList(File path){
         this.path = path;
     }
