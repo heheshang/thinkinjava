@@ -41,3 +41,5 @@ public enum Meal2 {
     }
   }
 } /* Same output as Meal.java *///:~
+
+

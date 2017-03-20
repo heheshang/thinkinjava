@@ -1,4 +1,4 @@
-//: enumerated/BigEnumSet.java
+package enumerated;//: enumerated/BigEnumSet.java
 import java.util.*;
 
 public class BigEnumSet {

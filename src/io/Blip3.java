@@ -37,13 +37,13 @@ public class Blip3 implements Externalizable {
     Blip3 b3 = new Blip3("A String ", 47);
     print(b3);
     ObjectOutputStream o = new ObjectOutputStream(
-      new FileOutputStream("Blip3.txt"));
+      new FileOutputStream("Blip3.out"));
     print("Saving object:");
     o.writeObject(b3);
     o.close();
     // Now get it back:
     ObjectInputStream in = new ObjectInputStream(
-      new FileInputStream("Blip3.txt"));
+      new FileInputStream("Blip3.out"));
     print("Recovering b3:");
     b3 = (Blip3)in.readObject();
     print(b3);

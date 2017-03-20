@@ -1,9 +1,14 @@
-//: enumerated/Reflection.java
+package enumerated;//: enumerated/Reflection.java
 // Analyzing enums using reflection.
-import java.lang.reflect.*;
-import java.util.*;
-import net.mindview.util.*;
-import static net.mindview.util.Print.*;
+import net.mindview.util.OSExecute;
+
+import java.lang.reflect.Method;
+import java.lang.reflect.Type;
+import java.util.Set;
+import java.util.TreeSet;
+
+import static net.mindview.util.Print.print;
+import static net.mindview.util.Print.printnb;
 
 enum Explore { HERE, THERE }
 

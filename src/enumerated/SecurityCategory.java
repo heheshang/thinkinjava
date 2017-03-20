@@ -1,4 +1,4 @@
-//: enumerated/SecurityCategory.java
+package enumerated;//: enumerated/SecurityCategory.java
 // More succinct subcategorization of enums.
 import net.mindview.util.*;
 
