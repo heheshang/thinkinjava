@@ -1,4 +1,4 @@
-//: io/Blip3.java
+package io;//: io/Blip3.java
 // Reconstructing an externalizable object.
 import java.io.*;
 import static net.mindview.util.Print.*;
@@ -37,13 +37,13 @@ public class Blip3 implements Externalizable {
     Blip3 b3 = new Blip3("A String ", 47);
     print(b3);
     ObjectOutputStream o = new ObjectOutputStream(
-      new FileOutputStream("Blip3.out"));
+      new FileOutputStream("Blip3.txt"));
     print("Saving object:");
     o.writeObject(b3);
     o.close();
     // Now get it back:
     ObjectInputStream in = new ObjectInputStream(
-      new FileInputStream("Blip3.out"));
+      new FileInputStream("Blip3.txt"));
     print("Recovering b3:");
     b3 = (Blip3)in.readObject();
     print(b3);

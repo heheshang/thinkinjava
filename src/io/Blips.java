@@ -1,4 +1,4 @@
-//: io/Blips.java
+package io;//: io/Blips.java
 // Simple use of Externalizable & a pitfall.
 import java.io.*;
 import static net.mindview.util.Print.*;
@@ -18,7 +18,7 @@ class Blip1 implements Externalizable {
 }
 
 class Blip2 implements Externalizable {
-  Blip2() {
+  public Blip2() {
     print("Blip2 Constructor");
   }
   public void writeExternal(ObjectOutput out)
@@ -38,19 +38,19 @@ public class Blips {
     Blip1 b1 = new Blip1();
     Blip2 b2 = new Blip2();
     ObjectOutputStream o = new ObjectOutputStream(
-      new FileOutputStream("Blips.out"));
+      new FileOutputStream("Blips.txt"));
     print("Saving objects:");
     o.writeObject(b1);
     o.writeObject(b2);
     o.close();
     // Now get them back:
     ObjectInputStream in = new ObjectInputStream(
-      new FileInputStream("Blips.out"));
+      new FileInputStream("Blips.txt"));
     print("Recovering b1:");
     b1 = (Blip1)in.readObject();
     // OOPS! Throws an exception:
-//! print("Recovering b2:");
-//! b2 = (Blip2)in.readObject();
+ print("Recovering b2:");
+ b2 = (Blip2)in.readObject();
   }
 } /* Output:
 Constructing objects:
