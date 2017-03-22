@@ -1,4 +1,4 @@
-//: concurrency/SimplePriorities.java
+package concurrency;//: concurrency/SimplePriorities.java
 // Shows the use of thread priorities.
 import java.util.concurrent.*;
 
@@ -18,9 +18,11 @@ public class SimplePriorities implements Runnable {
       // An expensive, interruptable operation:
       for(int i = 1; i < 100000; i++) {
         d += (Math.PI + Math.E) / (double)i;
+
         if(i % 1000 == 0)
           Thread.yield();
       }
+      System.out.println(Thread.currentThread().getPriority());
       System.out.println(this);
       if(--countDown == 0) return;
     }

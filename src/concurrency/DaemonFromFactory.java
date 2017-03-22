@@ -1,8 +1,12 @@
-//: concurrency/DaemonFromFactory.java
+package concurrency;//: concurrency/DaemonFromFactory.java
 // Using a Thread Factory to create daemons.
-import java.util.concurrent.*;
-import net.mindview.util.*;
-import static net.mindview.util.Print.*;
+import net.mindview.util.DaemonThreadFactory;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+import static net.mindview.util.Print.print;
 
 public class DaemonFromFactory implements Runnable {
   public void run() {
