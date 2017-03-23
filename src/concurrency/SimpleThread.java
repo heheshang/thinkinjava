@@ -1,4 +1,4 @@
-//: concurrency/SimpleThread.java
+package concurrency;//: concurrency/SimpleThread.java
 // Inheriting directly from the Thread class.
 
 public class SimpleThread extends Thread {
@@ -6,7 +6,7 @@ public class SimpleThread extends Thread {
   private static int threadCount = 0;
   public SimpleThread() {
     // Store the thread name:
-    super(Integer.toString(++threadCount));
+    super("Thread"+Integer.toString(++threadCount));
     start();
   }
   public String toString() {

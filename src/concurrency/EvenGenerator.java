@@ -1,4 +1,4 @@
-//: concurrency/EvenGenerator.java
+package concurrency;//: concurrency/EvenGenerator.java
 // When threads collide.
 
 public class EvenGenerator extends IntGenerator {

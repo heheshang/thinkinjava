@@ -1,4 +1,4 @@
-//: concurrency/ResponsiveUI.java
+package concurrency;//: concurrency/ResponsiveUI.java
 // User interface responsiveness.
 // {RunByHand}
 
