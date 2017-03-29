@@ -1,17 +1,24 @@
-package concurrency;//: concurrency/ExchangerDemo.java
+package concurrency;
 
-import net.mindview.util.BasicGenerator;
+import net.mindview.util.CountingGenerator;
 import net.mindview.util.Generator;
 
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.Exchanger;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
-class ExchangerProducer<T> implements Runnable {
+/**
+ * Created by Administrator on 2017/3/29 0029.
+ */
+class ExchangerProducer1<T> implements Runnable {
 	private Generator<T> generator;
 	private Exchanger<List<T>> exchanger;
 	private List<T> holder;
 
-	ExchangerProducer(Exchanger<List<T>> exchg, Generator<T> gen, List<T> holder) {
+	ExchangerProducer1(Exchanger<List<T>> exchg, Generator<T> gen, List<T> holder) {
 		exchanger = exchg;
 		generator = gen;
 		this.holder = holder;
@@ -20,23 +27,24 @@ class ExchangerProducer<T> implements Runnable {
 	public void run() {
 		try {
 			while ( !Thread.interrupted() ) {
-				for ( int i = 0; i < ExchangerDemo.size; i++ )
+				for ( int i = 0; i < E34_ExchangerDemo2.size; i++ )
 					holder.add(generator.next());
-				// Exchange full for empty:
+// Exchange full for empty:
 				holder = exchanger.exchange(holder);
 			}
 		} catch ( InterruptedException e ) {
-			// OK to terminate this way.
+// OK to terminate this way.
 		}
 	}
+//	Concurrency  663
 }
 
-class ExchangerConsumer<T> implements Runnable {
+class ExchangerConsumer1<T> implements Runnable {
 	private Exchanger<List<T>> exchanger;
 	private List<T> holder;
 	private volatile T value;
 
-	ExchangerConsumer(Exchanger<List<T>> ex, List<T> holder) {
+	ExchangerConsumer1(Exchanger<List<T>> ex, List<T> holder) {
 		exchanger = ex;
 		this.holder = holder;
 	}
@@ -51,13 +59,13 @@ class ExchangerConsumer<T> implements Runnable {
 				}
 			}
 		} catch ( InterruptedException e ) {
-			// OK to terminate this way.
+// OK to terminate this way.
 		}
 		System.out.println("Final value: " + value);
 	}
 }
 
-public class ExchangerDemo {
+public class E34_ExchangerDemo2 {
 	static int size = 10;
 	static int delay = 5; // Seconds
 
@@ -67,14 +75,14 @@ public class ExchangerDemo {
 		if ( args.length > 1 )
 			delay = new Integer(args[1]);
 		ExecutorService exec = Executors.newCachedThreadPool();
-		Exchanger<List<Fat>> xc = new Exchanger<List<Fat>>();
-		List<Fat> producerList = new CopyOnWriteArrayList<Fat>(),
-				consumerList = new CopyOnWriteArrayList<Fat>();
-		exec.execute(new ExchangerProducer<Fat>(xc, BasicGenerator.create(Fat.class), producerList));
-		exec.execute(new ExchangerConsumer<Fat>(xc, consumerList));
+		Exchanger<List<Integer>> xc = new Exchanger<List<Integer>>();
+		List<Integer>
+				producerList = new CopyOnWriteArrayList<Integer>(),
+				consumerList = new CopyOnWriteArrayList<Integer>();
+		exec.execute(new ExchangerProducer1<Integer>(xc, new CountingGenerator.Integer(), producerList));
+		exec.execute(new ExchangerConsumer1<Integer>(xc, consumerList));
 		TimeUnit.SECONDS.sleep(delay);
 		exec.shutdownNow();
 	}
-} /* Output: (Sample)
-Final value: Fat id: 29999
-*///:~
+//	Thinking in Java, 4 th Edition Annotated Solution Guide  664
+}

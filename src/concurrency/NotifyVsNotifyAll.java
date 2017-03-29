@@ -1,4 +1,4 @@
-//: concurrency/NotifyVsNotifyAll.java
+package concurrency;//: concurrency/NotifyVsNotifyAll.java
 import java.util.concurrent.*;
 import java.util.*;
 
@@ -17,7 +17,7 @@ class Blocker {
   synchronized void prodAll() { notifyAll(); }
 }
 
-class Task implements Runnable {
+class Task1 implements Runnable {
   static Blocker blocker = new Blocker();
   public void run() { blocker.waitingCall(); }
 }
@@ -32,7 +32,7 @@ public class NotifyVsNotifyAll {
   public static void main(String[] args) throws Exception {
     ExecutorService exec = Executors.newCachedThreadPool();
     for(int i = 0; i < 5; i++)
-      exec.execute(new Task());
+      exec.execute(new Task1());
     exec.execute(new Task2());
     Timer timer = new Timer();
     timer.scheduleAtFixedRate(new TimerTask() {
@@ -40,11 +40,11 @@ public class NotifyVsNotifyAll {
       public void run() {
         if(prod) {
           System.out.print("\nnotify() ");
-          Task.blocker.prod();
+          Task1.blocker.prod();
           prod = false;
         } else {
           System.out.print("\nnotifyAll() ");
-          Task.blocker.prodAll();
+          Task1.blocker.prodAll();
           prod = true;
         }
       }

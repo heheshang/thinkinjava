@@ -1,5 +1,4 @@
-package concurrency;//: concurrency/Restaurant.java
-// The producer-consumer approach to task cooperation.
+package concurrency;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -8,10 +7,13 @@ import java.util.concurrent.TimeUnit;
 import static net.mindview.util.Print.print;
 import static net.mindview.util.Print.printnb;
 
-class Meal {
+/**
+ * Created by Administrator on 2017/3/28 0028.
+ */
+class Meal1 {
     private final int orderNum;
 
-    public Meal(int orderNum) {
+    public Meal1(int orderNum) {
         this.orderNum = orderNum;
     }
 
@@ -20,10 +22,10 @@ class Meal {
     }
 }
 
-class WaitPerson implements Runnable {
-    private Restaurant restaurant;
+class WaitPerson1 implements Runnable {
+    private Restaurant1 restaurant;
 
-    public WaitPerson(Restaurant r) {
+    public WaitPerson1(Restaurant1 r) {
         restaurant = r;
     }
 
@@ -33,6 +35,7 @@ class WaitPerson implements Runnable {
                 synchronized ( this ) {
                     while ( restaurant.meal == null )
                         wait(); // ... for the chef to produce a meal
+//                    Thinking in Java, 4 th Edition Annotated Solution Guide  636
                 }
                 print("Waitperson got " + restaurant.meal);
                 synchronized ( restaurant.chef ) {
@@ -44,13 +47,15 @@ class WaitPerson implements Runnable {
             print("WaitPerson interrupted");
         }
     }
+
+
 }
 
-class Chef implements Runnable {
-    private Restaurant restaurant;
+class Chef1 implements Runnable {
+    private Restaurant1 restaurant;
     private int count = 0;
 
-    public Chef(Restaurant r) {
+    public Chef1(Restaurant1 r) {
         restaurant = r;
     }
 
@@ -61,13 +66,14 @@ class Chef implements Runnable {
                     while ( restaurant.meal != null )
                         wait(); // ... for the meal to be taken
                 }
-                if ( ++count == 100 ) {
+                if ( ++count == 10 ) {
                     print("Out of food, closing");
                     restaurant.exec.shutdownNow();
+                    return;
                 }
                 printnb("Order up! ");
                 synchronized ( restaurant.waitPerson ) {
-                    restaurant.meal = new Meal(count);
+                    restaurant.meal = new Meal1(count);
                     restaurant.waitPerson.notifyAll();
                 }
                 TimeUnit.MILLISECONDS.sleep(100);
@@ -78,31 +84,25 @@ class Chef implements Runnable {
     }
 }
 
-public class Restaurant {
-    Meal meal;
+class Restaurant1 {
+    Meal1 meal;
     ExecutorService exec = Executors.newCachedThreadPool();
-    WaitPerson waitPerson = new WaitPerson(this);
-    Chef chef = new Chef(this);
+    WaitPerson1 waitPerson = new WaitPerson1(this);
+    Chef1 chef = new Chef1(this);
 
-    public Restaurant() {
+    //    Concurrency  637
+    public Restaurant1() {
         exec.execute(chef);
         exec.execute(waitPerson);
     }
 
     public static void main(String[] args) {
-        new Restaurant();
+        new Restaurant1();
     }
-} /* Output:
-Order up! Waitperson got Meal 1
-Order up! Waitperson got Meal 2
-Order up! Waitperson got Meal 3
-Order up! Waitperson got Meal 4
-Order up! Waitperson got Meal 5
-Order up! Waitperson got Meal 6
-Order up! Waitperson got Meal 7
-Order up! Waitperson got Meal 8
-Order up! Waitperson got Meal 9
-Out of food, closing
-WaitPerson interrupted
-Order up! Chef interrupted
-*///:~
+}
+
+public class E25_Restaurant {
+    public static void main(String[] args) {
+        new Restaurant1();
+    }
+}

@@ -1,4 +1,4 @@
-//: concurrency/PipedIO.java
+package concurrency;//: concurrency/PipedIO.java
 // Using pipes for inter-task I/O
 import java.util.concurrent.*;
 import java.io.*;
